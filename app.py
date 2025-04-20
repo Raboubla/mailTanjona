@@ -26,7 +26,8 @@ class EmailApp:
         self.template_paths = {
             "mail1": "template1.txt",
             "mail2": "template2.txt",
-            "mail3": "template3.txt"
+            "mail3": "template3.txt",
+            "mail4": "template4.txt"
         }
 
         # Initialisation de l'interface
@@ -65,19 +66,22 @@ class EmailApp:
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill='both', expand=True, padx=20, pady=20)
 
-        # Créer les trois onglets
+        # Créer les quatre onglets
         self.tab1 = ttk.Frame(self.notebook)
         self.tab2 = ttk.Frame(self.notebook)
         self.tab3 = ttk.Frame(self.notebook)
+        self.tab4 = ttk.Frame(self.notebook)
 
         self.notebook.add(self.tab1, text="Création de compte")
         self.notebook.add(self.tab2, text="Confirmation investissement")
         self.notebook.add(self.tab3, text="Gains d'investissement")
+        self.notebook.add(self.tab4, text="Déblocage licence")
 
         # Configurer chaque onglet
         self.setup_tab1()
         self.setup_tab2()
         self.setup_tab3()
+        self.setup_tab4()
 
     def setup_tab1(self):
         # Formulaire 1: Création de compte
@@ -168,6 +172,33 @@ class EmailApp:
 
         # Bouton d'envoi
         send_button = ttk.Button(form_frame, text="Envoyer l'email", command=self.send_email3)
+        send_button.grid(row=len(fields)+1, column=0, columnspan=2, pady=20)
+
+    def setup_tab4(self):
+        # Formulaire 4: Déblocage de licence
+        form_frame = ttk.Frame(self.tab4)
+        form_frame.pack(fill='both', expand=True, padx=20, pady=20)
+
+        # Titre
+        title_label = ttk.Label(form_frame, text="Déblocage de licence d'investissement", font=("Arial", 14, "bold"))
+        title_label.grid(row=0, column=0, columnspan=2, pady=10, sticky='w')
+
+        # Champs de formulaire
+        fields = [
+            ("Email du destinataire:", "email4"),
+            ("Nom:", "nom4"),
+            ("Prénom:", "prenom4"),
+            ("Lien de paiement:", "lien_paiement")
+        ]
+
+        for i, (label_text, attr_name) in enumerate(fields):
+            ttk.Label(form_frame, text=label_text).grid(row=i+1, column=0, pady=5, padx=5, sticky='w')
+            entry = ttk.Entry(form_frame, width=50)
+            entry.grid(row=i+1, column=1, pady=5, padx=5, sticky='w')
+            setattr(self, attr_name, entry)
+
+        # Bouton d'envoi
+        send_button = ttk.Button(form_frame, text="Envoyer l'email", command=self.send_email4)
         send_button.grid(row=len(fields)+1, column=0, columnspan=2, pady=20)
 
     def validate_email(self, email):
@@ -353,6 +384,35 @@ class EmailApp:
                 messagebox.showinfo("Succès", "L'email de notification de gains a été envoyé avec succès!")
                 # Réinitialiser le formulaire
                 for field in ["email3", "nom3", "prenom3", "telephone3", "pays3", "adresse3", "capital3", "gains"]:
+                    getattr(self, field).delete(0, tk.END)
+        except Exception as e:
+            messagebox.showerror("Erreur de formatage", f"Erreur lors du formatage du template: {str(e)}")
+
+    def send_email4(self):
+        """Envoie l'email de déblocage de licence"""
+        if not self.validate_form("email4", ["nom4", "prenom4", "lien_paiement"]):
+            return
+
+        # Récupérer les données du formulaire
+        to_email = self.email4.get().strip()
+        nom = self.nom4.get().strip()
+        prenom = self.prenom4.get().strip()
+        lien_paiement = self.lien_paiement.get().strip()
+
+        # Récupérer le template
+        html_template = self.read_template("mail4")
+        if not html_template:
+            return
+
+        # Formater le template avec les données
+        try:
+            html_content = html_template % (prenom, nom, lien_paiement)
+            
+            # Envoyer l'email
+            if self.send_email(to_email, "Déblocage de votre licence d'investissement", html_content):
+                messagebox.showinfo("Succès", "L'email de déblocage de licence a été envoyé avec succès!")
+                # Réinitialiser le formulaire
+                for field in ["email4", "nom4", "prenom4", "lien_paiement"]:
                     getattr(self, field).delete(0, tk.END)
         except Exception as e:
             messagebox.showerror("Erreur de formatage", f"Erreur lors du formatage du template: {str(e)}")

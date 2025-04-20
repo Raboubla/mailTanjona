@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Simplex Trading - Déblocage de licence</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+        }
+        .header {
+            background: linear-gradient(45deg, #00ff88, #7c3aed);
+            color: white !important;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .content {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            color: #ffffff !important;
+        }
+        .info-box {
+            background: #2d3748;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            color: #ffffff !important;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ff88, #7c3aed);
+            color: white !important;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .footer {
+            background: #1e293b;
+            text-align: center;
+            margin-top: 20px;
+            color: #94a3b8 !important;
+            font-size: 0.9em;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .signature {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #3f495a;
+        }
+        .signature-name {
+            font-weight: bold;
+            color: #00ff88 !important;
+            margin-bottom: 5px;
+        }
+        .signature-title {
+            color: #94a3b8 !important;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .signature-contact {
+            color: #94a3b8 !important;
+            font-size: 0.9em;
+        }
+        h1, h2, h3 {
+            color: #00ff88 !important;
+        }
+        strong {
+            color: #00ff88 !important;
+        }
+        p {
+            color: #ffffff !important;
+        }
+        a {
+            color: #00ff88 !important;
+            text-decoration: none;
+        }
+        .unsubscribe {
+            font-size: 0.8em;
+            color: #94a3b8 !important;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .highlight {
+            color: #00ff88 !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Déblocage de votre licence d'investissement</h1>
+    </div>
+    
+    <div class="content">
+        <p>Bonjour %s %s,</p>
+        
+        <p>Comme évoqué, l'étape suivante consiste à procéder au <span class="highlight">déblocage de votre licence d'investissement</span>.</p>
+        
+        <p>Pour cela, veuillez utiliser le lien de paiement sécurisé ci-dessous afin de mettre en place le capital requis :</p>
+        
+        <p style="text-align: center; margin: 30px 0;">
+            <a href="%s" class="button">Accéder au lien de paiement</a>
+        </p>
+        
+        <p>Dès réception du paiement, votre licence sera débloquée et nous vous enverrons une confirmation accompagnée des prochaines étapes.</p>
+        
+        <p>Nous restons bien entendu à votre disposition pour toute question ou accompagnement.</p>
+        
+        <p>Bien cordialement,</p>
+    </div>
+    
+    <div class="footer">
+        <div class="signature">
+            <div class="signature-name">Marc-Antoine</div>
+            <div class="signature-title">Directeur des Relations Clients</div>
+            <div class="signature-contact">
+                <p><strong>Email :</strong> contact@crypto-invest-expert.com</p>
+                <p><strong>Tél :</strong> +44 7903 561836 </p>
+                <p><strong>Adresse :</strong> Shelton St, Covent Garden, Londres, WC2H 9JQ</p>
+            </div>
+        </div>
+        <div class="unsubscribe">
+            <p>Pour vous désabonner de nos communications, <a href="mailto:contact@crypto-invest-expert.com?subject=unsubscribe">cliquez ici</a></p>
+        </div>
+    </div>
+</body>
+</html> 
